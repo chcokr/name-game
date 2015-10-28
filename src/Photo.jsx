@@ -61,7 +61,6 @@ export default class Photo extends React.Component {
           className='text-center'
           style={{
             marginTop: 5,
-            position: 'absolute',
             width: '100%'
           }}>
           {index + 1}
