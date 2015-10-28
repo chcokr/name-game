@@ -9,7 +9,10 @@ export const markPhotoAsChosen = (photoId) => {
   state.select('chosenIdxs').push(photoId);
 
   const guessId = state.get('guessId');
-  if (guessId === photoId) {
+  if (guessId !== photoId) {
+    state.select('numIncorrect').apply(i => i + 1);
+  } else {
+    state.select('numCorrect').apply(i => i + 1);
     setTimeout(() => {
       updateChoices(5);
     }, 1000);

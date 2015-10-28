@@ -11,8 +11,10 @@ import {
 } from 'lodash';
 import React from 'react';
 import {
+  Nav,
   Navbar,
-  NavBrand
+  NavBrand,
+  NavItem
 } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import request from 'xhr-request';
@@ -49,12 +51,15 @@ request(
     chosenIdxs: ['chosenIdxs'],
     data: ['data'],
     displayedIdxs: ['displayedIdxs'],
-    guessId: ['guessId']
+    guessId: ['guessId'],
+    numCorrect: ['numCorrect'],
+    numIncorrect: ['numIncorrect']
   }
 })
 export default class App extends React.Component {
   render() {
-    const {chosenIdxs, data, displayedIdxs, guessId} = this.props;
+    const {chosenIdxs, data, displayedIdxs, guessId,
+      numCorrect, numIncorrect} = this.props;
 
     if (displayedIdxs.length === 0) {
       // Data is not ready yet, so don't render anything for now.
@@ -73,6 +78,25 @@ export default class App extends React.Component {
             <NavBrand>
               Namegame!
             </NavBrand>
+
+            <Nav right>
+              <NavItem>
+                <span
+                  style={{
+                    color: LESS.brandSuccess
+                  }}>
+                  Correct: <strong>{numCorrect}</strong>
+                </span>
+              </NavItem>
+              <NavItem>
+                <span
+                  style={{
+                    color: LESS.brandDanger
+                  }}>
+                  Wrong: <strong>{numIncorrect}</strong>
+                </span>
+              </NavItem>
+            </Nav>
           </Navbar>
 
           <h1
