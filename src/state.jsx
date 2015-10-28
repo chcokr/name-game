@@ -3,6 +3,7 @@ import Baobab from 'baobab';
 const state = new Baobab({
   chosenIdxs: [],
   data: {},
+  displayHowManyPhotos: 4,
   displayedIdxs: [],
   guessId: -1,
   isMattMode: false,

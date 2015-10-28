@@ -38,7 +38,7 @@ request(
 
     actions.updateData(normalizeData(res));
 
-    actions.updateChoices(5);
+    actions.updateChoices();
   }
 );
 
@@ -46,13 +46,15 @@ request(
   cursors: {
     chosenIdxs: ['chosenIdxs'],
     data: ['data'],
+    displayHowManyPhotos: ['displayHowManyPhotos'],
     displayedIdxs: ['displayedIdxs'],
     guessId: ['guessId']
   }
 })
 export default class App extends React.Component {
   render() {
-    const {chosenIdxs, data, displayedIdxs, guessId} = this.props;
+    const {chosenIdxs, data, displayHowManyPhotos,
+      displayedIdxs, guessId} = this.props;
 
     if (displayedIdxs.length === 0) {
       // Data is not ready yet, so don't render anything for now.
@@ -60,8 +62,6 @@ export default class App extends React.Component {
     }
 
     const displayedData = displayedIdxs.map(idx => data[idx]);
-
-    const pickHowMany = 5;
 
     return (
       <DocumentTitle title="Namegame!">
@@ -92,7 +92,7 @@ export default class App extends React.Component {
                 key={data.id}
                 name={data.name}
                 photoUrl={data.url}
-                size={`${100 / pickHowMany}%`}
+                size={`${100 / displayHowManyPhotos}%`}
                 status={(() => {
                   if (!includes(chosenIdxs, data.id)) {
                     return 'not-chosen';
@@ -109,7 +109,8 @@ export default class App extends React.Component {
             style={{
               color: LESS.grayLight
             }}>
-            If you have a keyboard, you can press 1-5 to make a choice.
+            If you have a keyboard, you can press 1-{displayHowManyPhotos} to
+            make a choice.
           </div>
 
         </div>

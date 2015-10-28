@@ -16,7 +16,7 @@ export const markPhotoAsChosen = (photoId) => {
     state.select('timesElapsed').push(Date.now() - roundStartMillisec);
     state.select('numCorrect').apply(i => i + 1);
     setTimeout(() => {
-      updateChoices(5);
+      updateChoices(state.get('displayHowManyPhotos'));
     }, 1000);
   }
 };
@@ -25,9 +25,10 @@ export const switchMattMode = () => {
   state.select('isMattMode').apply(b => !b);
 };
 
-export const updateChoices = (pickHowMany) => {
+export const updateChoices = () => {
   const data = state.get('data');
   const isMattMode = state.get('isMattMode');
+  const pickHowMany = state.get('displayHowManyPhotos');
 
   let sampledData;
   if (!isMattMode) {
