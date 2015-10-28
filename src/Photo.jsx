@@ -4,7 +4,7 @@ import React from 'react';
 
 export default class Photo extends React.Component {
   render() {
-    const {name, photoUrl, size, status} = this.props;
+    const {index, name, photoUrl, size, status} = this.props;
 
     let overlayColor;
     switch (status) {
@@ -57,6 +57,15 @@ export default class Photo extends React.Component {
           position: 'relative',
           width: size
         }}>
+        <h2
+          className='text-center'
+          style={{
+            marginTop: 5,
+            position: 'absolute',
+            width: '100%'
+          }}>
+          {index + 1}
+        </h2>
         {status !== 'not-chosen' && overlay}
         <img
           src={photoUrl}

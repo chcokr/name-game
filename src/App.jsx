@@ -1,4 +1,6 @@
 import * as actions from './actions';
+import LESS from '!!less-interop!./App.less';
+import './keyboard';
 import PhotoContainer from './PhotoContainer';
 
 import {
@@ -79,6 +81,7 @@ export default class App extends React.Component {
 
           <div
             style={{
+              height: 365,
               margin: '0 auto',
               padding: 20,
               width: '100%'
@@ -86,6 +89,7 @@ export default class App extends React.Component {
             {displayedData.map((data, i) =>
               <PhotoContainer
                 id={data.id}
+                index={i}
                 key={data.id}
                 name={data.name}
                 photoUrl={data.url}
@@ -99,6 +103,14 @@ export default class App extends React.Component {
                   }
                   return 'incorrect';
                 })()} />)}
+          </div>
+
+          <div
+            className='text-center'
+            style={{
+              color: LESS.grayLight
+            }}>
+            If you have a keyboard, you can press 1-5 to make a choice.
           </div>
 
         </div>
