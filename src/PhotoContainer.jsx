@@ -6,14 +6,9 @@ import {
 } from 'baobab-react/decorators';
 import React from 'react';
 
-@baobabBranch({
-  cursors: {
-    guessId: ['guessId']
-  }
-})
 export default class PhotoContainer extends React.Component {
   render() {
-    const {guessId, id} = this.props;
+    const {id} = this.props;
 
     return (
       <Photo
