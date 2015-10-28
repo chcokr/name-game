@@ -21,10 +21,27 @@ export const markPhotoAsChosen = (photoId) => {
   }
 };
 
-export const updateChoices = (pickHowMany) => {
-  const dataSize = Object.keys(state.get('data')).length;
+export const switchMattMode = () => {
+  state.select('isMattMode').apply(b => !b);
+};
 
-  const sampledData = sample(range(dataSize), pickHowMany);
+export const updateChoices = (pickHowMany) => {
+  const data = state.get('data');
+  const isMattMode = state.get('isMattMode');
+
+  let sampledData;
+  if (!isMattMode) {
+    const dataSize = Object.keys(data).length;
+    sampledData = sample(range(dataSize), pickHowMany);
+  } else {
+    let mattIds = [];
+    for (let key of Object.keys(data)) {
+      if (data[key].name.indexOf('Mat') !== -1) {
+        mattIds.push(data[key].id);
+      }
+    }
+    sampledData = sample(mattIds, pickHowMany);
+  }
 
   state.set('chosenIdxs', []);
   state.set('displayedIdxs', sampledData);

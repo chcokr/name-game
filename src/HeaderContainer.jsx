@@ -1,3 +1,4 @@
+import * as actions from './actions';
 import LESS from '!!less-interop!./App.less';
 import {
   average,
@@ -17,6 +18,7 @@ import {
 
 @baobabBranch({
   cursors: {
+    isMattMode: ['isMattMode'],
     numCorrect: ['numCorrect'],
     numIncorrect: ['numIncorrect'],
     timesElapsed: ['timesElapsed']
@@ -24,7 +26,7 @@ import {
 })
 export default class HeaderContainer extends React.Component {
   render() {
-    const {numCorrect, numIncorrect, timesElapsed} = this.props;
+    const {isMattMode, numCorrect, numIncorrect, timesElapsed} = this.props;
 
     return (
       <Navbar fluid>
@@ -33,6 +35,13 @@ export default class HeaderContainer extends React.Component {
         </NavBrand>
 
         <Nav right>
+          <NavItem
+            onClick={() => actions.switchMattMode()}>
+            <input
+              checked={isMattMode}
+              type='checkbox' />{' '}
+            Mat(t) mode
+          </NavItem>
           <NavItem>
             <span
               style={{
