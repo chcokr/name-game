@@ -1,16 +1,32 @@
 import * as actions from './actions';
 import Photo from './Photo';
 
+import {
+  branch as baobabBranch
+} from 'baobab-react/decorators';
 import React from 'react';
 
+@baobabBranch({
+  cursors: {
+    guessId: ['guessId']
+  }
+})
 export default class PhotoContainer extends React.Component {
   render() {
-    const {id} = this.props;
+    const {guessId, id} = this.props;
 
     return (
       <Photo
         {...this.props}
-        onClick={() => actions.markPhotoAsChosen(id)} />
+        onClick={() => {
+          actions.markPhotoAsChosen(id);
+
+          if (guessId === id) {
+            setTimeout(() => {
+              actions.updateChoices(5);
+            }, 1000);
+          }
+        }} />
     )
   }
 }
