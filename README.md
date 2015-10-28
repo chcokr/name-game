@@ -1,4 +1,12 @@
-# CHANGE_TITLE_PLZ
+# Namegame!
+
+This repository is my submission for [WillowTree's test
+project](https://github.com/willowtreeapps/wat-test-project).
+
+[![Build
+status](https://travis-ci.org/chcokr/name-game.svg)](https://travis-ci.org/chcokr/name-game)
+[![Dependency
+Status](https://david-dm.org/chcokr/name-game.svg)](https://david-dm.org/chcokr/name-game)
 
 ## Commands
 

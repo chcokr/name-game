@@ -1,5 +1,5 @@
 {
-  "firebase": "",
+  "firebase": "chcokr-name-game",
   "public": "dist",
   "ignore": [
     "src/",
