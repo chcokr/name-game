@@ -1,4 +1,8 @@
 import LESS from '!!less-interop!./App.less';
+import {
+  average,
+  formatTimeElapsed
+} from './util';
 
 import {
   branch as baobabBranch
@@ -14,12 +18,13 @@ import {
 @baobabBranch({
   cursors: {
     numCorrect: ['numCorrect'],
-    numIncorrect: ['numIncorrect']
+    numIncorrect: ['numIncorrect'],
+    timesElapsed: ['timesElapsed']
   }
 })
 export default class HeaderContainer extends React.Component {
   render() {
-    const {numCorrect, numIncorrect} = this.props;
+    const {numCorrect, numIncorrect, timesElapsed} = this.props;
 
     return (
       <Navbar fluid>
@@ -44,8 +49,18 @@ export default class HeaderContainer extends React.Component {
               Wrong: <strong>{numIncorrect}</strong>
             </span>
           </NavItem>
+          <NavItem>
+            <span
+              style={{
+                color: LESS.brandInfo
+              }}>
+              Avg.time:&nbsp;
+              <strong>{formatTimeElapsed(average(timesElapsed))}</strong>
+            </span>
+          </NavItem>
         </Nav>
       </Navbar>
     )
   }
 }
+

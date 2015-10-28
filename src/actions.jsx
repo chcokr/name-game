@@ -12,6 +12,8 @@ export const markPhotoAsChosen = (photoId) => {
   if (guessId !== photoId) {
     state.select('numIncorrect').apply(i => i + 1);
   } else {
+    const roundStartMillisec = state.get('roundStartMillisec');
+    state.select('timesElapsed').push(Date.now() - roundStartMillisec);
     state.select('numCorrect').apply(i => i + 1);
     setTimeout(() => {
       updateChoices(5);

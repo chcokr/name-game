@@ -1,16 +1,12 @@
 import LESS from '!!less-interop!./App.less';
+import {
+  formatTimeElapsed
+} from './util';
 
 import {
   branch as baobabBranch
 } from 'baobab-react/decorators';
 import React from 'react';
-
-const formatTimeElapsed = (elapsedMillisec) => {
-  const min = parseInt(elapsedMillisec / 1000 / 60, 10);
-  const sec = parseInt((elapsedMillisec - min * 1000 * 60) / 1000, 10);
-
-  return `${min}:${sec < 10 ? '0' : ''}${sec}`;
-};
 
 @baobabBranch({
   cursors: {

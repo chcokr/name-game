@@ -7,7 +7,8 @@ const state = new Baobab({
   guessId: -1,
   numCorrect: 0,
   numIncorrect: 0,
-  roundStartMillisec: -1
+  roundStartMillisec: -1,
+  timesElapsed: []
 });
 
 export default state;
