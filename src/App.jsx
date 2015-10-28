@@ -1,4 +1,5 @@
 import * as actions from './actions';
+import HeaderContainer from './HeaderContainer';
 import LESS from '!!less-interop!./App.less';
 import './keyboard';
 import PhotoContainer from './PhotoContainer';
@@ -10,12 +11,6 @@ import {
   includes
 } from 'lodash';
 import React from 'react';
-import {
-  Nav,
-  Navbar,
-  NavBrand,
-  NavItem
-} from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import request from 'xhr-request';
 
@@ -51,15 +46,12 @@ request(
     chosenIdxs: ['chosenIdxs'],
     data: ['data'],
     displayedIdxs: ['displayedIdxs'],
-    guessId: ['guessId'],
-    numCorrect: ['numCorrect'],
-    numIncorrect: ['numIncorrect']
+    guessId: ['guessId']
   }
 })
 export default class App extends React.Component {
   render() {
-    const {chosenIdxs, data, displayedIdxs, guessId,
-      numCorrect, numIncorrect} = this.props;
+    const {chosenIdxs, data, displayedIdxs, guessId} = this.props;
 
     if (displayedIdxs.length === 0) {
       // Data is not ready yet, so don't render anything for now.
@@ -74,30 +66,7 @@ export default class App extends React.Component {
       <DocumentTitle title="Namegame!">
         <div>
 
-          <Navbar fluid>
-            <NavBrand>
-              Namegame!
-            </NavBrand>
-
-            <Nav right>
-              <NavItem>
-                <span
-                  style={{
-                    color: LESS.brandSuccess
-                  }}>
-                  Correct: <strong>{numCorrect}</strong>
-                </span>
-              </NavItem>
-              <NavItem>
-                <span
-                  style={{
-                    color: LESS.brandDanger
-                  }}>
-                  Wrong: <strong>{numIncorrect}</strong>
-                </span>
-              </NavItem>
-            </Nav>
-          </Navbar>
+          <HeaderContainer />
 
           <h1
             className="text-center"
