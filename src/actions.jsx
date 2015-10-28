@@ -7,6 +7,13 @@ import {
 
 export const markPhotoAsChosen = (photoId) => {
   state.select('chosenIdxs').push(photoId);
+
+  const guessId = state.get('guessId');
+  if (guessId === photoId) {
+    setTimeout(() => {
+      updateChoices(5);
+    }, 1000);
+  }
 };
 
 export const updateChoices = (pickHowMany) => {

@@ -18,15 +18,7 @@ export default class PhotoContainer extends React.Component {
     return (
       <Photo
         {...this.props}
-        onClick={() => {
-          actions.markPhotoAsChosen(id);
-
-          if (guessId === id) {
-            setTimeout(() => {
-              actions.updateChoices(5);
-            }, 1000);
-          }
-        }} />
+        onClick={() => actions.markPhotoAsChosen(id)} />
     )
   }
 }
