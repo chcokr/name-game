@@ -49,6 +49,14 @@ CI](https://travis-ci.org) deploys the release build onto Firebase Hosting.
 Make sure the environment variables `FIREBASE_EMAIL` and `FIREBASE_PASSWORD` are
 properly set on Travis CI.
 
+**Note**: Now that's how I would usually do it, ideally.
+But the API that this app makes calls to doesn't support HTTPS, and Firebase
+force-redirects to HTTPS.
+So on the HTTPS page hosted on Firebase, the app makes calls to HTTP, which is
+not allowed by browsers.
+Thus I ended up just using GitHub Pages.
+*To the maintainer of the API:* please add HTTPS support!
+
 ## Background
 
 This is a single-page web application built with the following choices:
