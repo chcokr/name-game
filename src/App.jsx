@@ -80,9 +80,9 @@ export default class App extends React.Component {
 
           <div
             style={{
-              height: 365,
               margin: '0 auto',
-              padding: 20,
+              overflow: 'auto',
+              padding: '0 20px 30px 20px',
               width: '100%'
             }}>
             {displayedData.map((data, i) =>
