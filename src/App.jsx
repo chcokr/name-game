@@ -1,4 +1,5 @@
 import * as actions from './actions';
+import ClockContainer from './ClockContainer';
 import HeaderContainer from './HeaderContainer';
 import LESS from '!!less-interop!./App.less';
 import './keyboard';
@@ -75,6 +76,7 @@ export default class App extends React.Component {
             }}>
             Who is {data[guessId].name}?
           </h1>
+          <ClockContainer />
 
           <div
             style={{

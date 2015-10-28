@@ -27,6 +27,7 @@ export const updateChoices = (pickHowMany) => {
   state.set('chosenIdxs', []);
   state.set('displayedIdxs', sampledData);
   state.set('guessId', sample(sampledData, 1)[0]);
+  state.set('roundStartMillisec', Date.now());
 };
 
 export const updateData = (data) => {
