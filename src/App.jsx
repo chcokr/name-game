@@ -11,7 +11,8 @@ import {
 } from 'lodash';
 import React from 'react';
 import {
-  Navbar
+  Navbar,
+  NavBrand
 } from 'react-bootstrap';
 import DocumentTitle from 'react-document-title';
 import request from 'xhr-request';
@@ -68,7 +69,10 @@ export default class App extends React.Component {
       <DocumentTitle title="Namegame!">
         <div>
 
-          <Navbar>
+          <Navbar fluid>
+            <NavBrand>
+              Namegame!
+            </NavBrand>
           </Navbar>
 
           <h1
